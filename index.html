@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FRAME｜東広島市の美容室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f6f1e7;--paper:#fbf9f3;--ink:#2c2722;--muted:#8a7e6d;--line:#e4dac9;--accent:#a98b62;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:"Zen Kaku Gothic New",sans-serif;line-height:1.9;-webkit-font-smoothing:antialiased;letter-spacing:.02em;}
+  .mincho{font-family:"Zen Kaku Gothic Antique",sans-serif;}
+  .latin{font-family:"Cormorant Garamond",serif;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 40px;}
+  .ph{position:relative;background:repeating-linear-gradient(135deg,#ece3d4 0 14px,#e6dcc8 14px 28px);display:flex;align-items:center;justify-content:center;color:#a3927a;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.05em;text-align:center;overflow:hidden;}
+  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;}
+  .ph span{background:rgba(251,249,243,.78);padding:5px 11px;border-radius:2px;}
+
+  /* section label EN/JP */
+  .lab{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:46px;text-align:center;}
+  .lab .en{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:30px;letter-spacing:.12em;color:var(--accent);}
+  .lab .jp{font-size:12px;letter-spacing:.34em;color:var(--muted);}
+  .lab.left{align-items:flex-start;text-align:left;}
+
+  /* header */
+  header{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:18px 36px;transition:.4s;}
+  header.scrolled{background:rgba(246,241,231,.9);backdrop-filter:blur(10px);padding:12px 36px;border-bottom:1px solid var(--line);}
+  .logo{display:block;line-height:0;}
+  .logo img{height:30px;width:auto;display:block;border-radius:3px;}
+  .foot-logo img{height:34px;width:auto;display:block;border-radius:3px;}
+  .hnav{display:flex;align-items:center;gap:28px;}
+  .hnav ul{display:flex;gap:24px;list-style:none;align-items:center;}
+  .hnav a{font-size:12.5px;letter-spacing:.06em;opacity:.8;transition:.25s;}
+  .hnav a:hover{opacity:1;color:var(--accent);}
+  .sns{display:flex;gap:14px;align-items:center;}
+  .sns a{width:18px;height:18px;opacity:.7;transition:.25s;}
+  .sns a:hover{opacity:1;}
+  .sns svg{width:100%;height:100%;fill:var(--ink);}
+  .sns a.hp{width:20px;height:20px;}
+  .sns a.hp svg{fill:none;}
+  .reserve{display:inline-flex;flex-direction:column;align-items:center;gap:6px;line-height:1;border:1px solid var(--ink);padding:10px 22px;border-radius:2px;transition:.3s;}
+  .reserve:hover{background:var(--ink);color:var(--bg);}
+  .reserve .s{font-size:9px;letter-spacing:.2em;opacity:.65;}
+  .reserve .l{font-family:"Zen Kaku Gothic Antique",sans-serif;font-size:13px;letter-spacing:.08em;line-height:1;font-weight:500;}
+  .menu-btn{display:none;background:none;border:none;font-size:24px;color:var(--ink);cursor:pointer;}
+
+  /* hero */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;}
+  .hero .bg{position:absolute;inset:0;background:url('assets/hero-staff.jpg') center 35%/cover no-repeat;}
+  .hero .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(44,39,34,.5),transparent 50%);}
+  .hero-inner{position:relative;z-index:2;width:100%;padding:0 0 80px;}
+  .hero .eyebrow{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:19px;letter-spacing:.12em;color:#f0e6d4;margin-bottom:22px;}
+  .hero h1{font-family:"Zen Kaku Gothic Antique",sans-serif;font-weight:500;color:#fff;font-size:clamp(34px,4.8vw,62px);line-height:1.5;letter-spacing:.05em;text-shadow:0 2px 30px rgba(30,20,10,.35);}
+  .hero p{color:#f3ecdf;font-size:15px;max-width:30em;margin-top:22px;line-height:2.1;text-shadow:0 1px 14px rgba(30,20,10,.4);}
+  .scroll-cue{position:absolute;right:36px;bottom:40px;writing-mode:vertical-rl;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:13px;letter-spacing:.3em;color:#fff;z-index:2;}
+
+  section{padding:120px 0;}
+  .sec-title{font-family:"Zen Kaku Gothic Antique",sans-serif;font-weight:500;font-size:clamp(26px,3.2vw,40px);line-height:1.5;letter-spacing:.04em;}
+  .sec-sub{color:var(--muted);font-size:14px;}
+
+  /* concept */
+  .concept{background:var(--paper);}
+  .concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+  .concept-copy .lead{font-family:"Zen Kaku Gothic Antique",sans-serif;font-size:25px;line-height:2;letter-spacing:.04em;margin-bottom:28px;}
+  .concept-copy p{font-size:15px;line-height:2.3;color:#4f483d;margin-bottom:22px;}
+  .concept-copy .more{display:inline-flex;align-items:center;gap:10px;margin-top:14px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:15px;letter-spacing:.06em;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:4px;}
+  .concept-visual{position:relative;aspect-ratio:4/5;}
+  .concept-visual .ph{position:absolute;inset:0;}
+
+  /* reasons */
+  .reasons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
+  .reason .ph{aspect-ratio:1/1;margin-bottom:24px;}
+  .reason .rn{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:18px;color:var(--accent);letter-spacing:.1em;}
+  .reason h3{font-family:"Zen Kaku Gothic Antique",sans-serif;font-weight:500;font-size:21px;margin:8px 0 12px;letter-spacing:.04em;}
+  .reason p{font-size:13.5px;color:#6a6155;line-height:2;}
+
+  /* news / instagram latest */
+  .news{background:var(--paper);}
+  .salon--hub{background:var(--paper);}
+  .salon-news{margin-top:56px;padding-top:52px;border-top:1px solid var(--line);scroll-margin-top:92px;}
+  .news-store-note{text-align:center;font-size:13px;color:var(--muted);margin:-28px 0 32px;letter-spacing:.04em;}
+  .news-ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1060px;margin:0 auto;}
+  .news-ig-item{display:flex;justify-content:center;min-width:0;}
+  .news-ig-item iframe{width:100%;max-width:360px;min-height:520px;border:0;border-radius:8px;background:#fff;box-shadow:0 12px 40px rgba(80,60,30,.08);}
+  .news-ig-profile{display:flex;justify-content:center;}
+  .news-ig-profile iframe{width:100%;max-width:900px;min-width:300px;height:560px;border:0;border-radius:8px;background:#fff;box-shadow:0 12px 40px rgba(80,60,30,.08);}
+  .news-more{text-align:center;margin-top:44px;}
+
+  /* voice */
+  .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .voice{background:var(--paper);border:1px solid var(--line);padding:38px 32px;}
+  .voice .mark{font-family:"Cormorant Garamond",serif;font-size:50px;line-height:.6;color:var(--accent);}
+  .voice p{font-size:14.5px;line-height:2.1;margin:16px 0 22px;color:#4f483d;}
+  .voice .who{font-size:12px;color:var(--muted);}
+
+  /* env dark */
+  .env{background:var(--ink);color:#efe8da;}
+  .env .lab .en{color:#c9ac80;}.env .lab .jp{color:#9a8d79;}
+  .env-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+  .env-list{list-style:none;margin-top:10px;}
+  .env-list li{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.12);align-items:baseline;}
+  .env-list .n{font-family:"Cormorant Garamond",serif;font-style:italic;color:#c9ac80;font-size:16px;min-width:34px;}
+  .env-list h4{font-family:"Zen Kaku Gothic Antique",sans-serif;font-weight:500;font-size:18px;letter-spacing:.04em;}
+  .env-list p{font-size:12.5px;color:#b6ac9b;margin-top:4px;}
+  .env-visual .ph{aspect-ratio:4/5;background:repeating-linear-gradient(135deg,#3a342c 0 14px,#332e27 14px 28px);color:#7d7361;}
+  .env-visual .ph span{background:rgba(44,39,34,.7);color:#c9ac80;}
+
+  /* owner */
+  .owner{background:var(--paper);}
+  .owner-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:70px;align-items:center;}
+  .owner-visual .ph{aspect-ratio:4/5;}
+  .owner-copy .lead{font-family:"Zen Kaku Gothic Antique",sans-serif;font-size:24px;line-height:2;margin-bottom:26px;letter-spacing:.04em;}
+  .owner-copy p{font-size:14.5px;line-height:2.2;color:#4f483d;margin-bottom:20px;}
+  .owner-copy .sign{margin-top:24px;font-size:13px;color:var(--muted);}
+  .owner-copy .sign b{font-family:"Zen Kaku Gothic Antique",sans-serif;font-weight:500;font-size:19px;color:var(--ink);margin-left:10px;}
+
+  /* recruit */
+  .recruit{background:var(--ink);color:var(--bg);text-align:center;}
+  .recruit .lab .en{color:#c9ac80;}.recruit .lab .jp{color:#9a8d79;}
+  .recruit h2{font-family:"Zen Kaku Gothic Antique",sans-serif;font-weight:500;font-size:clamp(26px,3.6vw,46px);line-height:1.5;letter-spacing:.05em;margin-bottom:26px;}
+  .recruit p{color:#b6ac9b;max-width:32em;margin:0 auto 40px;font-size:14.5px;line-height:2.1;}
+  .btn{display:inline-block;background:#c9ac80;color:var(--ink);padding:17px 48px;border-radius:2px;font-size:13.5px;letter-spacing:.14em;transition:.3s;}
+  .btn:hover{background:#fff;}
+  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;margin-left:12px;}
+  .btn.ghost:hover{background:#fff;color:var(--ink);border-color:#fff;}
+
+  /* salon list */
+  .salon-list{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .salon-hint{text-align:center;font-size:13px;color:var(--muted);margin:-18px 0 36px;letter-spacing:.04em;}
+  .salon{background:var(--paper);border:1px solid var(--line);overflow:hidden;transition:.3s;}
+  .salon:hover{transform:translateY(-5px);box-shadow:0 22px 46px rgba(120,90,50,.1);}
+  .salon .ph{aspect-ratio:16/10;}
+  .salon .b{padding:22px 24px 26px;}
+  .salon h4{font-family:"Zen Kaku Gothic Antique",sans-serif;font-weight:500;font-size:18px;letter-spacing:.04em;margin-bottom:8px;}
+  .salon .addr{font-size:12.5px;color:#6a6155;line-height:1.9;}
+  .salon .tel{font-family:"Cormorant Garamond",serif;font-size:17px;color:var(--accent);margin-top:8px;letter-spacing:.06em;}
+  .salon-list .salon{cursor:pointer;}
+  .salon-list .salon.is-active{border-color:var(--accent);box-shadow:0 22px 46px rgba(120,90,50,.16);}
+  .salon .ph--salon{background:url('assets/salon-group.jpg') center/cover no-repeat;}
+  .salon .tag{display:inline-block;font-size:11px;color:var(--accent);letter-spacing:.06em;margin-top:10px;border:1px solid var(--accent);padding:3px 10px;}
+  .salon .cta{font-size:12px;color:var(--accent);margin-top:12px;letter-spacing:.06em;}
+
+  /* instagram */
+  .insta{background:var(--paper);}
+  .insta-head{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:12px;}
+  .insta-store-note{text-align:center;font-size:13px;color:var(--muted);margin-bottom:28px;letter-spacing:.04em;}
+  .insta-embed-wrap{display:flex;justify-content:center;}
+  .insta-embed-wrap iframe{width:100%;max-width:540px;min-width:300px;height:520px;border:0;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 12px 40px rgba(80,60,30,.08);}
+  .insta-follow{text-align:center;margin-top:24px;font-size:13px;}
+  .insta-follow a{color:var(--accent);letter-spacing:.06em;border-bottom:1px solid var(--accent);padding-bottom:3px;text-decoration:none;}
+  .insta-follow a:hover{opacity:.75;}
+
+  /* footer */
+  footer{background:var(--bg);border-top:1px solid var(--line);padding:80px 0 44px;}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:54px;}
+  .foot-logo{font-family:"Cormorant Garamond",serif;font-size:32px;letter-spacing:.3em;margin-bottom:18px;}
+  .foot-grid h5{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:14px;color:var(--accent);margin-bottom:16px;}
+  .foot-grid ul{list-style:none;}
+  .foot-grid li{font-size:12.5px;color:#6a6155;padding:5px 0;}
+  .foot-sns{display:flex;gap:16px;margin-top:18px;}
+  .foot-sns a{width:20px;height:20px;opacity:.7;}
+  .foot-sns svg{width:100%;height:100%;fill:var(--ink);}
+  .foot-bottom{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:24px;font-size:11px;color:var(--muted);letter-spacing:.06em;}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:.9s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* sticky mobile reserve */
+  .m-reserve{display:none;}
+
+  @media(max-width:900px){
+    .wrap{padding:0 22px;}
+    header{padding:14px 20px;}
+    .hnav ul,.sns{display:none;}
+    .menu-btn{display:block;}
+    .reserve{display:none;}
+    section{padding:76px 0;}
+    .concept-grid,.env-grid,.owner-grid{grid-template-columns:1fr;gap:40px;}
+    .reasons-grid,.voice-grid{grid-template-columns:1fr;}
+    .news-ig-grid{grid-template-columns:1fr;}
+    .salon-list{grid-template-columns:1fr;}
+    .salon-hint{margin:-8px 0 28px;}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:30px;}
+    .foot-bottom{flex-direction:column;gap:10px;}
+    .m-reserve{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:55;}
+    .m-reserve a{flex:1;text-align:center;padding:16px;font-size:13px;letter-spacing:.12em;background:var(--ink);color:var(--bg);}
+    .m-reserve a.tel{background:var(--accent);}
+    body{padding-bottom:52px;}
+  }
+</style>
+</head>
+<body>
+<header id="hdr">
+  <a href="#" class="logo"><img src="assets/frame-logo.png" alt="FRAME" /></a>
+  <div class="hnav">
+    <ul>
+      <li><a href="#salon">SALON / NEWS</a></li>
+      <li><a href="#concept">CONCEPT</a></li>
+      <li><a href="#recruit">RECRUIT</a></li>
+    </ul>
+    <div class="sns">
+      <a href="https://www.instagram.com/frame.plus/" target="_blank" rel="noopener noreferrer" class="js-ig-link" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.6 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.46 2.21 8.84 2.2 12 2.2Zm0 1.8c-3.14 0-3.5 0-4.74.07-.9.04-1.38.19-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.33-.28.81-.32 1.71C3.42 9.13 3.4 9.5 3.4 12s.02 2.87.08 4.12c.04.9.19 1.38.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.33.13.81.28 1.71.32 1.24.06 1.6.07 4.74.07s3.5 0 4.74-.07c.9-.04 1.38-.19 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.33.28-.81.32-1.71.06-1.25.07-1.62.07-4.12s-.01-2.87-.07-4.12c-.04-.9-.19-1.38-.32-1.71a2.85 2.85 0 0 0-.69-1.06 2.85 2.85 0 0 0-1.06-.69c-.33-.13-.81-.28-1.71-.32C15.5 4 15.14 4 12 4Zm0 3.06A4.94 4.94 0 1 1 7.06 12 4.94 4.94 0 0 1 12 7.06Zm0 8.15A3.21 3.21 0 1 0 8.79 12 3.21 3.21 0 0 0 12 15.2Zm6.3-8.35a1.15 1.15 0 1 1-1.15-1.15 1.15 1.15 0 0 1 1.15 1.15Z"/></svg></a>
+      <a href="#" aria-label="ホットペッパービューティー" class="hp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#e60012" d="M12.5 2.2c-.5 1.6-.2 3.2.5 4.6.5 1 .9 2 1.1 3.1.2 1.1 0 2.2-.6 3.2-1.1 1.8-3.5 3.2-6.5 3.7v1.5c4.3-.2 8-2.4 9.3-5.8.5-1.4.6-2.9 0-4.3-.4-1-.8-2-1.2-3-.7-2-.9-4.2-.6-6z"/><path fill="#3a9e3f" d="M13 2c.9-.6 1.8-.7 2.6-.2.6.3.8 1 .4 1.6-.5.8-1.4 1.1-2.3.8-.6-.2-1.1-.7-.7-2.2z"/></svg></a>
+    </div>
+    <a href="#salon" class="reserve"><span class="s">24時間いつでも</span><span class="l">ネット予約はこちら</span></a>
+  </div>
+  <button class="menu-btn" aria-label="menu">☰</button>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="bg" role="img" aria-label="FRAMEスタッフ集合写真"></div>
+  <div class="scrim"></div>
+  <div class="hero-inner">
+    <div class="wrap">
+      <div class="eyebrow">A place where people grow.</div>
+      <h1>人が輝けば、<br />未来が輝く。</h1>
+      <p>FRAME は技術の会社ではなく「人」の会社です。ここで働く一人ひとりの心が、お客様の毎日にそっと寄り添います。</p>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- SALON + NEWS -->
+<section class="salon salon--hub" id="salon">
+  <div class="wrap">
+    <div class="lab reveal"><span class="en">Salon List</span><span class="jp">店舗一覧</span></div>
+    <p class="salon-hint reveal">店舗をクリックすると、その店舗の Instagram 最新投稿が表示されます。</p>
+    <div class="salon-list" id="salonList">
+      <div class="salon reveal" data-salon="plus" role="button" tabindex="0" aria-pressed="false"><div class="ph ph--salon"></div><div class="b"><h4>FRAME plus</h4><div class="addr">〒739-2125 東広島市高屋町中島332-4</div><div class="tel latin">082-439-1255</div><div class="cta">Instagramを見る →</div></div></div>
+      <div class="salon reveal" data-salon="square" role="button" tabindex="0" aria-pressed="false"><div class="ph ph--salon"></div><div class="b"><h4>FRAME square</h4><div class="addr">〒739-0021 東広島市西条町助実1191-4</div><div class="tel latin">082-431-3716</div><span class="tag">プライベートルーム</span><div class="cta">Instagramを見る →</div></div></div>
+      <div class="salon reveal" data-salon="central" role="button" tabindex="0" aria-pressed="false"><div class="ph ph--salon"></div><div class="b"><h4>FRAME central</h4><div class="addr">〒739-0044 東広島市西条町下見4276-3</div><div class="tel latin">082-490-3916</div><span class="tag">託児所完備</span><div class="cta">Instagramを見る →</div></div></div>
+      <div class="salon reveal" data-salon="mens" role="button" tabindex="0" aria-pressed="false"><div class="ph ph--salon"></div><div class="b"><h4>FRAME MEN'S SALON</h4><div class="addr">〒739-0011 東広島市西条本町11-20</div><div class="tel latin">082-430-7288</div><span class="tag">メンズ専門</span><div class="cta">Instagramを見る →</div></div></div>
+      <div class="salon reveal" data-salon="gakuen" role="button" tabindex="0" aria-pressed="false"><div class="ph ph--salon"></div><div class="b"><h4>FRAME MEN'S SALON 学園店</h4><div class="addr">〒739-0044 東広島市西条下見5-10-7 キャンパス101</div><div class="tel latin">082-430-7818</div><span class="tag">メンズ専門</span><div class="cta">Instagramを見る →</div></div></div>
+      <div class="salon reveal" data-salon="cheri" role="button" tabindex="0" aria-pressed="false"><div class="ph ph--salon"></div><div class="b"><h4>Chéri the beauty</h4><div class="addr">〒739-0044 東広島市西条町下見4276-3</div><div class="tel latin">082-490-5188</div><span class="tag">ネイル・アイラッシュ</span><div class="cta">Instagramを見る →</div></div></div>
+      <div class="salon reveal" data-salon="ippo" role="button" tabindex="0" aria-pressed="false"><div class="ph ph--salon"></div><div class="b"><h4>FRAME photo Studio ippo</h4><div class="addr">〒739-0044 東広島市西条町下見4276-3</div><div class="tel latin">090-1013-3847</div><span class="tag">フォトスタジオ</span><div class="cta">Instagramを見る →</div></div></div>
+    </div>
+    <div class="salon-news" id="news">
+      <div class="lab reveal"><span class="en">Instagram</span><span class="jp">最新のお知らせ</span></div>
+      <p class="news-store-note reveal" id="newsStoreNote">FRAME plus（@frame.plus）の最新投稿</p>
+      <div class="reveal" id="newsIgGrid"></div>
+      <div class="news-more reveal"><a id="newsIgFollow" href="https://www.instagram.com/frame.plus/" target="_blank" rel="noopener noreferrer" class="more latin js-ig-link" style="display:inline-block;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:4px;font-style:italic;">@frame.plus のInstagramでもっと見る →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="concept" id="concept">
+  <div class="wrap">
+    <div class="concept-grid">
+      <div class="concept-copy reveal">
+        <div class="lab left"><span class="en">Concept</span><span class="jp">私たちの理念</span></div>
+        <div class="lead mincho">「何をする会社か」ではなく、<br />「なぜ存在する会社か」を。</div>
+        <p>お客様を幸せに。仲間を幸せに。家族を幸せに。そして地域社会へ。FRAME が掲げるのは、髪型の先にある一人ひとりの人生です。これからの時代は、技術や商品の差ではなく「理念への共感」で選ばれていく。だから私たちは、人を育てることから始めます。</p>
+        <a href="#" class="more latin">Read more →</a>
+      </div>
+      <div class="concept-visual reveal"><div class="ph"><img src="assets/staff/staff-05.png" alt="FRAMEスタッフ" loading="lazy" /></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REASONS -->
+<section class="reasons" id="reasons">
+  <div class="wrap">
+    <div class="lab reveal"><span class="en">Why FRAME</span><span class="jp">選ばれる理由</span></div>
+    <div class="reasons-grid">
+      <div class="reason reveal"><div class="ph"><img src="assets/staff/staff-01.png" alt="FRAMEスタッフ" loading="lazy" /></div><div class="rn latin">01 — Humanity</div><h3>人間力を、育てる</h3><p>挨拶・感謝・思いやり・利他の心。技術の前に、人としての土台を大切にします。</p></div>
+      <div class="reason reveal"><div class="ph"><img src="assets/staff/staff-03.png" alt="FRAMEスタッフ" loading="lazy" /></div><div class="rn latin">02 — Technique</div><h3>確かな、技術力</h3><p>人間力に支えられた技術だからこそ、お客様の「なりたい」に深く応えられます。</p></div>
+      <div class="reason reveal"><div class="ph"><img src="assets/staff/staff-06.png" alt="FRAMEスタッフ" loading="lazy" /></div><div class="rn latin">03 — Hospitality</div><h3>心に、寄り添う</h3><p>その日一日が前向きになる時間を。帰り道に少し元気になれる接客を目指します。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="voice-sec" id="voice">
+  <div class="wrap">
+    <div class="lab reveal"><span class="en">Voice</span><span class="jp">お客様の声</span></div>
+    <div class="voice-grid">
+      <div class="voice reveal"><div class="mark latin">&ldquo;</div><p>いつも元気をもらえます。会話の時間そのものが楽しみで通っています。</p><div class="who">40代・女性／常連のお客様</div></div>
+      <div class="voice reveal"><div class="mark latin">&ldquo;</div><p>話をちゃんと聞いてくれる。子どもも安心して連れていけるのが嬉しい。</p><div class="who">30代・女性／お子さま連れ</div></div>
+      <div class="voice reveal"><div class="mark latin">&ldquo;</div><p>担当の方の人柄が好きで通っています。FRAME のファンになりました。</p><div class="who">50代・男性／5年来のお客様</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OWNER -->
+<section class="owner" id="owner">
+  <div class="wrap">
+    <div class="owner-grid">
+      <div class="owner-visual reveal"><div class="ph"><img src="assets/staff/staff-07.png" alt="FRAME代表" loading="lazy" /></div></div>
+      <div class="owner-copy reveal">
+        <div class="lab left"><span class="en">Owner Message</span><span class="jp">代表メッセージ</span></div>
+        <div class="lead mincho">人が輝けば、街が輝く。</div>
+        <p>私たちが目指すのは、ただ髪を整える美容室ではありません。お客様、仲間、その家族、そして地域社会。関わるすべての人を幸せにする「人づくり企業」でありたいと願っています。</p>
+        <p>シリコンバレーで学んだのは、これからは理念への共感で選ばれる時代だということ。FRAME はその信念のもと、一人ひとりの人生に寄り添い続けます。</p>
+        <div class="sign">代表取締役<b class="mincho">氏名 ○○○○</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECRUIT -->
+<section class="recruit" id="recruit">
+  <div class="wrap reveal">
+    <div class="lab"><span class="en">Recruit</span><span class="jp">採用情報</span></div>
+    <h2>あなたの人生も、<br />ここで輝かせませんか。</h2>
+    <p>技術者である前に、ひとりの人として成長できる場所。求める人物像、先輩の声、一日の流れ、キャリアプラン。すべては採用特設ページで。</p>
+    <div><a href="#" class="btn">採用情報を見る</a><a href="#" class="btn ghost">エントリー</a></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><img src="assets/frame-logo.png" alt="FRAME" /></div>
+        <p style="font-size:12.5px;color:#6a6155;max-width:22em;">髪を整えるだけではなく、人生に寄り添う。人づくりから始める美容室、FRAME。</p>
+        <div class="foot-sns">
+          <a href="https://www.instagram.com/frame.plus/" target="_blank" rel="noopener noreferrer" class="js-ig-link" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.6 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.46 2.21 8.84 2.2 12 2.2Z"/></svg></a>
+          <a href="#" aria-label="ホットペッパービューティー" class="hp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#e60012" d="M12.5 2.2c-.5 1.6-.2 3.2.5 4.6.5 1 .9 2 1.1 3.1.2 1.1 0 2.2-.6 3.2-1.1 1.8-3.5 3.2-6.5 3.7v1.5c4.3-.2 8-2.4 9.3-5.8.5-1.4.6-2.9 0-4.3-.4-1-.8-2-1.2-3-.7-2-.9-4.2-.6-6z"/><path fill="#3a9e3f" d="M13 2c.9-.6 1.8-.7 2.6-.2.6.3.8 1 .4 1.6-.5.8-1.4 1.1-2.3.8-.6-.2-1.1-.7-.7-2.2z"/></svg></a>
+        </div>
+      </div>
+      <div><h5>Menu</h5><ul><li>お知らせ</li><li>理念について</li><li>選ばれる理由</li><li>店舗一覧</li></ul></div>
+      <div><h5>About</h5><ul><li>お客様の声</li><li>代表メッセージ</li></ul></div>
+      <div><h5>Contact</h5><ul><li>店舗一覧</li><li>ご予約はこちら</li><li>採用情報</li><li>お問い合わせ</li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>&copy; 2026 FRAME. All rights reserved.</span><span>Instagram ／ ホットペッパー ／ TikTok</span></div>
+  </div>
+</footer>
+
+<!-- mobile sticky reserve -->
+<div class="m-reserve"><a href="#salon">ネットで予約する</a><a href="tel:0824391255" class="tel">電話で予約する</a></div>
+
+<script>
+  const hdr=document.getElementById('hdr');
+  addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',scrollY>60);});
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  function renderNewsIg(store){
+    const grid=document.getElementById('newsIgGrid');
+    const note=document.getElementById('newsStoreNote');
+    const follow=document.getElementById('newsIgFollow');
+    if(!grid)return;
+    if(!store.instagram){
+      if(note)note.textContent=store.name+' のInstagram';
+      if(follow){follow.removeAttribute('href');follow.textContent='この店舗のInstagramは準備中です';}
+      grid.className='news-ig-profile';
+      grid.innerHTML='<p class="news-store-note" style="margin:40px 0;">公式サイトに店舗Instagramの掲載がありません。アカウントが分かり次第、埋め込みます。</p>';
+      return;
+    }
+    const igUrl='https://www.instagram.com/'+store.instagram+'/';
+    if(note)note.textContent=store.name+'（@'+store.instagram+'）の最新投稿';
+    if(follow){follow.href=igUrl;follow.textContent='@'+store.instagram+' のInstagramでもっと見る →';}
+    const posts=store.posts||[];
+    if(posts.length){
+      grid.className='news-ig-grid';
+      grid.innerHTML=posts.slice(0,3).map(code=>'<div class="news-ig-item"><iframe src="https://www.instagram.com/p/'+code+'/embed/captioned" title="Instagram投稿" loading="lazy" allow="encrypted-media" referrerpolicy="no-referrer-when-downgrade"></iframe></div>').join('');
+    }else{
+      grid.className='news-ig-profile';
+      grid.innerHTML='<iframe src="'+igUrl+'embed" title="Instagram最新投稿" loading="lazy" allow="encrypted-media" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+    }
+  }
+  const stores={
+    plus:{name:'FRAME plus',instagram:'frame.plus',posts:[]},
+    square:{name:'FRAME square',instagram:'frame.square0312',posts:[]},
+    central:{name:'FRAME central',instagram:'frame_central',posts:[]},
+    mens:{name:"FRAME MEN'S SALON",instagram:'',posts:[]},
+    gakuen:{name:"FRAME MEN'S SALON 学園店",instagram:'',posts:[]},
+    cheri:{name:'Chéri the beauty',instagram:'framebeautyresort',posts:[]},
+    ippo:{name:'FRAME photo Studio ippo',instagram:'studio_ippo.01',posts:[]}
+  };
+  function setStore(id,opts){
+    const store=stores[id];if(!store)return;
+    localStorage.setItem('frameStore',id);
+    document.body.dataset.store=id;
+    if(store.instagram){
+      const igUrl='https://www.instagram.com/'+store.instagram+'/';
+      document.querySelectorAll('.js-ig-link').forEach(a=>a.href=igUrl);
+    }
+    document.querySelectorAll('[data-salon]').forEach(el=>{
+      const on=el.dataset.salon===id;
+      el.classList.toggle('is-active',on);
+      el.setAttribute('aria-pressed',on?'true':'false');
+    });
+    renderNewsIg(store);
+    if(opts&&opts.scroll){
+      const news=document.getElementById('news');
+      if(news)news.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  }
+  const saved=localStorage.getItem('frameStore');
+  setStore(stores[saved]?saved:'plus');
+
+  document.querySelectorAll('[data-salon]').forEach(el=>{
+    el.addEventListener('click',()=>setStore(el.dataset.salon,{scroll:true}));
+    el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setStore(el.dataset.salon,{scroll:true});}});
+  });
+</script>
+</body>
+</html>
